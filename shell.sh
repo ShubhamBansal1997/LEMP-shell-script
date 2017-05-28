@@ -15,7 +15,7 @@ read -p 'Enter your appname[hello-web]: ' appname
 appname=${appname:-'hello-web'}
 read -p 'Enter your domain name[mydomain.com]: ' domainname
 domainname=${domainname:-'mydomain.com'}
-read -p 'Want to install mysql?[y]: ' mysqlstatus
+read -p 'Install mysql[y]: ' mysqlstatus
 mysqlstatus=${mysqlstatus:-'y'}
 
 if [ "$mysqlstatus" = "y" ]; then
