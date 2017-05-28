@@ -7,6 +7,7 @@ It is a shell script to install LEMP stack on the ubuntu server [php,mysql,nginx
   - Easy to use
   - Setup in 2 mins
   - Work with most of php framworks and open scripts - Laravel, Codeigniter, Wordpress etc. 
+  - Use php7.0 and most of the php packages(php7.0-mysql php7.0-fpm php7.0-mbstring php7.0-xml php7.0-curl php7.0-json mcrypt php7.0-mcrypt php7.0-zip )
 
 # How to use !
 
