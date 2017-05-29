@@ -5,7 +5,8 @@ echo '------------------------------------------------------------------'
 echo '1. Nginx'
 echo '2. php7.0'
 echo '3. mysql(optional)'
-echo '4. Composer'
+echo '4. Composer(optional)'
+echo '5. Git directory(optional)'
 echo '------------------------------------------------------------------'
 echo '**********************Starting the Process************************'
 echo '------------------------------------------------------------------'
@@ -17,10 +18,23 @@ read -p 'Enter your domain name[mydomain.com]: ' domainname
 domainname=${domainname:-'mydomain.com'}
 read -p 'Install mysql[y]: ' mysqlstatus
 mysqlstatus=${mysqlstatus:-'y'}
-
+read -p 'Install Composer[y]: ' composerstatus
+composerstatus=${composerstatus:-'y'}
 if [ "$mysqlstatus" = "y" ]; then
   read -p 'Enter your database name[hello-web]: ' dbname
   dbname=${dbname:-'hello-web'}
+fi
+read -p 'Intialized git [y]: ' gitstatus
+gitstatus=${gitstatus:-'y'}
+if [ "$gitstatus" = "y" ]; then
+  echo 'If your adding ssh url please add your ssh keys!!!!!!!!!'
+  read -p 'Git url[https://github.com/ShubhamBansal1997/LEMP-shell-script.git]: ' giturl
+  giturl=${giturl}
+  echo 'git branch would be addded to root directory '
+  echo 'if you want to add make a pull request'
+  echo 'remove the default index.php'
+  echo 'rm -rf  index.php'
+  echo 'and then git pull your branch'
 fi
 
 read -p 'Enter your server ip[127.0.0.1]: ' ipaddress
@@ -124,9 +138,15 @@ EOF
   mysql_secure_installation
 fi
 
-cd ~
-curl -sS https://getcomposer.org/installer | php
-${admin} mv composer.phar /usr/local/bin/composer
+if [ "$composerstatus" = "y" ]; then
+  echo '------------------------------------------------------------------'
+  echo '********************Installling Composer**************************'
+  echo '------------------------------------------------------------------'
+  cd ~
+  curl -sS https://getcomposer.org/installer | php
+  ${admin} mv composer.phar /usr/local/bin/composer
+fi
+
 cd /var/www/html/${domainname}
 ${admin} rm -f index.nginx-debain.html
 ${admin} chown -R www-data:www-data /var/www/html/${domainname}
@@ -147,6 +167,11 @@ ${admin} bash -c "cat >> index.php" <<EOF
   </body>
 </html>
 EOF
+
+if [ -n "$giturl" ] ; then
+  git init
+  git remote add origin ${giturl}
+fi
 
 ${admin} rm -rf '/etc/php/7.0/fpm/pool.d/www.conf'
 ${admin} touch '/etc/php/7.0/fpm/pool.d/www.conf'
@@ -565,6 +590,7 @@ pm.max_spare_servers = 3
 ;php_admin_flag[log_errors] = on
 ;php_admin_value[memory_limit] = 32M
 EOF
+
 ${admin} /etc/init.d/php7.0-fpm restart
 echo "Congrats!!! Your LEMP server is ready for deployment"
 echo "www-directory: /var/www/html/${domainname}"
