@@ -30,6 +30,11 @@ if [ "$gitstatus" = "y" ]; then
   echo 'If your adding ssh url please add your ssh keys!!!!!!!!!'
   read -p 'Git url[https://github.com/ShubhamBansal1997/LEMP-shell-script.git]: ' giturl
   giturl=${giturl}
+  echo 'git branch would be addded to root directory '
+  echo 'if you want to add make a pull request'
+  echo 'remove the default index.php'
+  echo 'rm -rf  index.php'
+  echo 'and then git pull your branch'
 fi
 
 read -p 'Enter your server ip[127.0.0.1]: ' ipaddress
@@ -166,9 +171,6 @@ EOF
 if [ -n "$giturl" ] ; then
   git init
   git remote add origin ${giturl}
-  echo 'git branch added to root directory if you want to add make a pull request'
-  echo 'remove the default index.php'
-  echo 'and then git pull'
 fi
 
 ${admin} rm -rf '/etc/php/7.0/fpm/pool.d/www.conf'

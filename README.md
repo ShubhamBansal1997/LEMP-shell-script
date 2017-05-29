@@ -25,6 +25,8 @@ It is a shell script to install LEMP stack on the ubuntu server [php,mysql,nginx
     Enter your appname[hello-web]:testing
     Enter your domain name[mydomain.com]:testing.com
     Install mysql[y]:y
+    Install Composer[y]: y
+    Intialized git [y]: y
     Enter your server ip[127.0.0.1]:23.34.12.31
     ```
   - Please enter your ip correctly otherwise server will not work
@@ -33,10 +35,19 @@ It is a shell script to install LEMP stack on the ubuntu server [php,mysql,nginx
     ```sh
     Enter your database name[hello-web]:testing
     ```
-
-
-
+  - If you intialized git then it asks
+    ```sh
+    If your adding ssh url please add your ssh keys!!!!!!!!!
+    Git url[https://github.com/ShubhamBansal1997/LEMP-shell-script.git]:https://github.com/ShubhamBansal1997/LEMP-shell-script.git
+    git branch would be addded to root directory 
+    if you want to add make a pull request
+    remove the default index.php
+    rm -rf  index.php
+    and then git pull your branch
+    ```
+    
 Points to remember:
+---
   - Please don't stop this after running otherwise you have to reset your server
   - Your nginx configuration can be edited here
     ```sh
