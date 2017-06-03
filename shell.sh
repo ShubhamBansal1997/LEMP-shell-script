@@ -169,8 +169,8 @@ ${admin} bash -c "cat >> index.php" <<EOF
 EOF
 
 if [ -n "$giturl" ] ; then
-  git init
-  git remote add origin ${giturl}
+  ${admin} git init
+  ${admin} git remote add origin ${giturl}
 fi
 
 ${admin} rm -rf '/etc/php/7.0/fpm/pool.d/www.conf'
