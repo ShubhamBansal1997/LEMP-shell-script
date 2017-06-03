@@ -63,7 +63,7 @@ Points to remember:
     ```
   - After making any change in php configuration.Run this
     ```sh
-    [sudo] etc/init.d/php7.0-fpm restart
+    [sudo] /etc/init.d/php7.0-fpm restart
     ```
 
 Note for Users
