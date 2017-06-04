@@ -30,7 +30,7 @@ It is a shell script to install LEMP stack on the ubuntu server [php,mysql,nginx
     Enter your server ip[127.0.0.1]:23.34.12.31
     ```
   - Please enter your ip correctly otherwise server will not work
-  - Instalation process started it asked for various presmissions in between kept yes for them
+  - Installation process started it asked for various permissions in between kept yes for them
   - If you install mysql it also asks
     ```sh
     Enter your database name[hello-web]:testing
