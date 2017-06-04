@@ -11,7 +11,7 @@ echo '------------------------------------------------------------------'
 echo '**********************Starting the Process************************'
 echo '------------------------------------------------------------------'
 read -p 'Use sudo[y]: ' rootstatus
-rootstatus=${name:-'y'}
+rootstatus=${rootstatus:-'y'}
 read -p 'Enter your appname[hello-web]: ' appname
 appname=${appname:-'hello-web'}
 read -p 'Enter your domain name[mydomain.com]: ' domainname
@@ -37,7 +37,7 @@ if [ "$gitstatus" = "y" ]; then
   echo 'and then git pull your branch'
 fi
 
-read -p 'Enter your server ip[127.0.0.1]: ' ipaddress
+read -p 'Enter your server public ip[127.0.0.1]: ' ipaddress
 ipaddress=${ipaddress:-'127.0.0.1'}
 
 if [ "$rootstatus" = "y" ]; then
