@@ -1,2 +1,10 @@
 language: bash
-script: make test
+
+before_install:
+  - cd $HOME
+  - git clone https://github.com/ShubhamBansal1997/LEMP-shell-script.git
+  - cd LEMP-shell-script/
+  - chmod +x shell.sh
+
+script:
+    - bash shell.sh
