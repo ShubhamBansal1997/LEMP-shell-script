@@ -1,5 +1,10 @@
 language: bash
-
+addons:
+  apt:
+    sources:
+      - debian-sid    # Grab ShellCheck from the Debian repo
+    packages:
+      - shellcheck
 before_install:
   - cd $HOME
   - git clone https://github.com/ShubhamBansal1997/LEMP-shell-script.git
